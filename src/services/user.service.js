@@ -1,0 +1,72 @@
+
+const httpStatus = require('http-status')
+const User  = require('../models/schema/user.model')
+const ApiError = require('../utils/ApiError')
+
+/**
+ * Create a user
+ * @param {Object} userBody
+ * @returns {Promise<User>}
+ */
+const AddUser = async (userBody) => {
+    const isTaken = await User.findOne({ email: userBody.email })
+    if(isTaken){
+        throw new ApiError(httpStatus.BAD_REQUEST, "Email is already taken, please use another or log in")
+    }
+    return User.create(userBody);
+}
+
+// const getAllUsers = async () => {
+//     return User.find()
+// }
+
+/**
+ * Get user by email
+ * @param {string} email
+ * @returns {Promise<User>}
+ */
+const getUserByEmail = async (email) => {
+    return User.findOne({ email });
+};
+
+/**
+ * Update user by id
+ * @param {ObjectId} userId
+ * @param {Object} updateBody
+ * @returns {Promise<User>}
+ */
+const updateUserById = async (userId, updateBody) => {
+    const user = await User.getUserById(userId);
+    if (!user) {
+        throw new ApiError(httpStatus.NOT_FOUND, 'User not found');
+    }
+    if (updateBody.email && (await User.isEmailTaken(updateBody.email, userId))) {
+        throw new ApiError(httpStatus.BAD_REQUEST, 'Email already taken');
+    }
+    Object.assign(user, updateBody);
+    await user.save();
+    return user;
+};
+
+/**
+ * Delete user by id
+ * @param {ObjectId} userId
+ * @returns {Promise<User>}
+ */
+const deleteUserById = async (userId) => {
+    const user = await User.getUserById(userId);
+    if (!user) {
+        throw new ApiError(httpStatus.NOT_FOUND, 'User not found');
+    }
+    await user.remove();
+    return user;
+};
+
+
+module.exports = {
+    AddUser,
+    getUserByEmail,
+    updateUserById,
+    deleteUserById
+
+}
