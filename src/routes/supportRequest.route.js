@@ -8,6 +8,12 @@ const router = express.Router()
 
 router
     .route('/')
-    .post(auth('manageSupportTickets'), validate(supportTicketValidation.createSupportRequest), supportRequestController.createRequest )
+    .post(auth('createSupportRequest'), validate(supportTicketValidation.createSupportRequest), supportRequestController.createRequest )
+    .get(auth('manageSupportTickets'), supportRequestController.getSupportRequests)
+
+router
+    .route('/:requestId')
+    .get(auth( 'getRequest'), validate(supportTicketValidation.getSupportRequest), supportRequestController.getSupportRequest)
+    .patch(auth('modifyRequest'), validate(supportTicketValidation.updateSupportRequest), supportRequestController.updateSupportRequest )
 
 module.exports = router

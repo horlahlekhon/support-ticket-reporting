@@ -4,11 +4,11 @@ import "cypress-localstorage-commands";
 describe('POST or GET /api/users/ Get all users in the system given a role type that can do so and also',  () =>  {
     before(  () => {
         cy.loginWithPerm("customer")
-       cy.login()
+        cy.login()
         cy.saveLocalStorage()
         // await User.dropCollection()
     })
-    beforeEach(async () => {
+    beforeEach( () => {
         cy.restoreLocalStorage()
     })
     it('should Get all users when called with GET and no body', function () {
@@ -21,8 +21,6 @@ describe('POST or GET /api/users/ Get all users in the system given a role type 
                         Authorization: `Bearer ${token}`
                     }
                 }
-
-
                 cy.request(opts)
                     .then((response) => {
                         const body = response.body
@@ -30,6 +28,7 @@ describe('POST or GET /api/users/ Get all users in the system given a role type 
                     })
             })
     });
+
     it('should reject users request if no auth is given',  () => {
         const opts = {
             method: 'GET',
@@ -56,7 +55,7 @@ describe('POST or GET /api/users/ Get all users in the system given a role type 
                 cy.request(opts)
                     .then((response) => {
                         expect(response).property('status').to.equal(403)
-                        expect(response.body).property('message').to.equal('Forbidden')
+                        expect(response.body).property('message').to.equal('Forbidden please ensure you have the required permission to access the resource')
                     })
             })
     });
@@ -68,11 +67,11 @@ describe('/api/users/:userId manage a single user ', () => {
         cy.login()
         cy.saveLocalStorage()
     })
-    beforeEach(async () => {
+    beforeEach( () => {
         cy.restoreLocalStorage()
     })
 
-    it('should Get a valid user given a valid userId', function () {
+    it('should Get a valid user given a valid userId', async () =>  {
         cy.getLocalStorage('token')
             .then((token) => {
                 cy.getLocalStorage('userId')

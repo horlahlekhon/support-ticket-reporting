@@ -1,8 +1,5 @@
 import {apiUri} from "../settings";
 
-const baseUrl = require('../settings')
-
-
 describe('Provide Authentication for accessing the system', () => {
     it('should register a user successfully',  () =>  {
         const rand = Math.random()
