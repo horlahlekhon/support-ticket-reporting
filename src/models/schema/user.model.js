@@ -41,6 +41,9 @@ const userSchema = mongoose.Schema(
             enum: roles,
             default: 'customer'
         }
+    },
+    {
+        timestamps: true
     }
 )
 

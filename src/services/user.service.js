@@ -16,9 +16,15 @@ const AddUser = async (userBody) => {
     return User.create(userBody);
 }
 
-// const getAllUsers = async () => {
-//     return User.find()
-// }
+/**
+ * Get user by id
+ * @param {ObjectId} id
+ * @returns {Promise<User>}
+ */
+const getUserById = async (id) => {
+    return User.findById(id);
+};
+
 
 /**
  * Get user by email
@@ -36,7 +42,7 @@ const getUserByEmail = async (email) => {
  * @returns {Promise<User>}
  */
 const updateUserById = async (userId, updateBody) => {
-    const user = await User.getUserById(userId);
+    const user = await User.findById(userId);
     if (!user) {
         throw new ApiError(httpStatus.NOT_FOUND, 'User not found');
     }
@@ -62,11 +68,19 @@ const deleteUserById = async (userId) => {
     return user;
 };
 
+const queryUsers = async (filter, options) => {
+    const users = await User.find();
+    return users;
+};
+
+
 
 module.exports = {
     AddUser,
     getUserByEmail,
     updateUserById,
-    deleteUserById
+    deleteUserById,
+    queryUsers,
+    getUserById
 
 }
