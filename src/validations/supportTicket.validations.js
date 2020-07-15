@@ -27,8 +27,18 @@ const updateSupportRequest = {
 
 }
 
+const exportRequests = {
+    query: Joi.object().keys({
+        startDate: Joi.date(),
+        endDate: Joi.date(),
+        sortBy: Joi.string().valid('asc', 'desc'),
+        limit: Joi.number()
+    })
+}
+
 module.exports = {
     createSupportRequest,
     getSupportRequest,
-    updateSupportRequest
+    updateSupportRequest,
+    exportRequests
 }

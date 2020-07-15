@@ -11,13 +11,14 @@ const commentSchema = mongoose.Schema(
             type: String,
             required: true
         },
-        fromMe: {
+        fromCustomer: {
             type: Boolean,
-            require : true
+            require : false
         },
         commenter: {
             type: mongoose.Schema.Types.ObjectId,
-            ref: 'User'
+            ref: 'User',
+            required: false
         }
     },
     {

@@ -26,6 +26,7 @@ const userSchema = mongoose.Schema(
             type: String,
             required: true,
             trim: true,
+            // select: false, TODO find a way to not include password in user get and wont affect isPasswordMatch()
             minlength: 8,
             validate(value) {
                 if (!value.match(/\d/) || !value.match(/[a-zA-Z]/)) {

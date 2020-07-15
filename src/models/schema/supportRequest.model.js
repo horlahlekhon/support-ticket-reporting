@@ -1,5 +1,6 @@
 const mongoose = require('mongoose')
 const {roles, requestStatus} = require("../config")
+const mongooseToCsv = require('mongoose-to-csv')
 
 
 const supportRequest = mongoose.Schema(
@@ -24,6 +25,10 @@ const supportRequest = mongoose.Schema(
                     throw new Error(`status must be within: ${Object.values(requestStatus)}`);
                 }
             }
+        },
+        dateClosed: {
+            type: Date,
+            required: false
         }
     },
 
@@ -32,6 +37,26 @@ const supportRequest = mongoose.Schema(
     }
 
 )
+
+supportRequest.plugin(mongooseToCsv, {
+    headers: 'Title Description CreatedAt user',
+    constraints: {
+        'Title': 'title',
+        'Description': 'description',
+        'CreatedAt': 'createdAt',
+        'user': 'userId'
+    }
+})
+
+supportRequest.pre('save',  async function(next) {
+    const request = this
+    if (request.isModified('requestStatus') && request.requestStatus === requestStatus.closed){
+        request.dateClosed = new Date()
+        request.markModified('dateClosed')
+    }
+    next()
+})
+
 /**
  * @typedef SupportRequest
  */
