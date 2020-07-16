@@ -1,9 +1,10 @@
-const apiUri = require('../settings')
+import {apiUri} from '../settings'
 require("cypress-localstorage-commands")
 
 
 describe('Support request', () => {
     before(  () => {
+      cy.seedUsers()
         cy.loginWithPerm("customer")
         cy.login()
         cy.saveLocalStorage()

@@ -1,9 +1,10 @@
-const apiUri = require('../settings')
+import {apiUri} from '../settings'
 require("cypress-localstorage-commands")
 
 
 describe('POST or GET /api/users/ Get all users in the system given a role type that can do so and also',  () =>  {
     before(  () => {
+        cy.seedUsers()
         cy.loginWithPerm("customer")
         cy.login()
         cy.saveLocalStorage()
@@ -13,6 +14,7 @@ describe('POST or GET /api/users/ Get all users in the system given a role type 
         cy.restoreLocalStorage()
     })
     it('should Get all users when called with GET and no body', function () {
+      cy.log(`api url: ${apiUri}`)
         cy.getLocalStorage('token')
             .then((token) => {
                 const opts = {

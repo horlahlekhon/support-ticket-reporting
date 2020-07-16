@@ -1,0 +1,8 @@
+[
+{"_id":"5f104c0c42ceddab28f7af0b","title":"API throws Quantum entanglement error : #28575","description":"How weird!!","userId":"5f104b9342ceddab28f7af00","requestStatus":"PENDING","createdAt":"2020-01-16T12:46:04.101Z","updatedAt":"2020-07-16T12:46:04.101Z"},
+{"_id":"5f104c0c42ceddab28f7af0f","title":"API throws Quantum entanglement error : #58495","description":"How weird!!","userId":"5f104b9342ceddab28f7af00","requestStatus":"PENDING","createdAt":"2020-02-16T12:46:04.101Z","updatedAt":"2020-07-16T12:46:04.101Z"},
+{"_id":"5f104c0c42ceddab28f7af12","title":"API throws Quantum entanglement error : #4348","description":"How weird!!","userId":"5f104b9342ceddab28f7af00","requestStatus":"CLOSED","createdAt":"2020-02-16T12:46:04.101Z","updatedAt":"2020-07-16T12:46:04.101Z","dateClosed":"2020-07-16T12:46:04.439Z"},
+{"_id":"5f104c0c42ceddab28f7af15","title":"API throws Quantum entanglement error : #37731","description":"How weird!!","userId":"5f104b9342ceddab28f7af00","requestStatus":"PENDING","createdAt":"2020-04-16T12:46:04.101Z","updatedAt":"2020-07-16T12:46:04.101Z"},
+{"_id":"5f104c0c42ceddab28f7af18","title":"API throws Quantum entanglement error : #56823","description":"How weird!!","userId":"5f104b9342ceddab28f7af00","requestStatus":"PENDING","createdAt":"2020-05-16T12:46:04.101Z","updatedAt":"2020-07-16T12:46:04.101Z"},
+{"_id":"5f104c0f42ceddab28f7af1c","title":"The new API, doesnt returns Id on object fields","description":"I tried getting the response object but unique id field doesnt exist on it","userId":"5f104b9342ceddab28f7af00","requestStatus":"CLOSED","createdAt":"2020-07-16T12:46:04.101Z","updatedAt":"2020-07-16T12:46:07.621Z","dateClosed":"2020-07-16T12:46:07.621Z"}
+]

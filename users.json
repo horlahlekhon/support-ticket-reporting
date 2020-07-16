@@ -1,0 +1,5 @@
+[
+  {"_id":"5f104b9342ceddab28f7aeff","role":"admin","name":"Olalekan","password":"$2a$08$7Uo0wCaQBcfxIV9Q5m7xOet.EG6O1CMvNo9fp/Tv.NafJIclcGawW","email":"olalekan.adebaritest@gmail.com","createdAt":"2020-07-16T11:34:42.941Z","updatedAt":"2020-07-16T11:34:42.941Z"},
+{"_id":"5f104b9342ceddab28f7af00","role":"customer","name":"Lekan","password":"$2a$08$Rl3Z.vlWEg1x//fgNnLSF.MdToc21F0/d/itFlQ9wvZnnNzckhX1K","email":"horlahlekhontest@gmail.com","createdAt":"2020-07-16T11:34:42.941Z","updatedAt":"2020-07-16T11:34:42.941Z"},
+{"_id":"5f104b9342ceddab28f7af01","role":"support-agent","name":"Oluwaseun","password":"$2a$08$1heL.Mj5xCdTjqWSg.EJb.zqDsIG1a3LlSFMpmEx05SPvSyygyca6","email":"adebari.olalekan.oluwaseuntest@gmail.com","createdAt":"2020-07-16T11:34:42.941Z","updatedAt":"2020-07-16T11:34:42.941Z"}
+]

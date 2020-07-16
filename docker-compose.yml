@@ -1,0 +1,33 @@
+version: '3'
+
+services:
+  support-reporting:
+    build: .
+    image: support-reporting
+    environment:
+      - MONGODB_URL=mongodb://mongodb:27017/ticket-reporting
+    ports:
+      - '3000:3000'
+    depends_on:
+      - mongodb
+    command: npm start
+    volumes:
+      - .:/usr/src/support-reporting
+    networks:
+      - support-reporting-network
+
+  mongodb:
+    image: mongo:4.2.1-bionic
+    ports:
+      - '27017:27017'
+    volumes:
+      - dbdata:/data/db
+    networks:
+      - support-reporting-network
+
+volumes:
+  dbdata:
+
+networks:
+  support-reporting-network:
+    driver: bridge

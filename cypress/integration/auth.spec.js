@@ -1,4 +1,4 @@
-const apiUri = require('../settings')
+import {apiUri} from '../settings'
 
 describe('Provide Authentication for accessing the system', () => {
     it('should register a user successfully',  () =>  {

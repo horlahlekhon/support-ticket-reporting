@@ -1,20 +1,17 @@
-const apiUri = require('../settings')
+import {apiUri} from '../settings'
 require("cypress-localstorage-commands")
 
 
 describe('Comments on a Support request', () => {
     before(() => {
-        // cy.loginWithPerm("customer")
-        // cy.loginSupportAgent()
-        // cy.saveLocalStorage()
-        // await User.dropCollection()
-
+      cy.seedUsers()
+      cy.saveLocalStorage()
     })
     beforeEach(() => {
-        cy.loginWithPerm("customer")
-        cy.loginSupportAgent()
-        cy.saveLocalStorage()
-        cy.getLocalStorage('tokenNonGetUser')
+      cy.loginWithPerm("customer")
+      cy.loginSupportAgent()
+
+      cy.getLocalStorage('tokenNonGetUser')
             .then((token) => {
                 const opts = {
                     method: 'POST',
@@ -27,6 +24,7 @@ describe('Comments on a Support request', () => {
                         description: 'How weird!!'
                     }
                 }
+                cy.log(`tk: ${token}`)
                 cy.request(opts)
                     .then((response) => {
                         cy.setLocalStorage('supportRequest', response.body._id)
@@ -34,9 +32,6 @@ describe('Comments on a Support request', () => {
                     })
             })
         cy.restoreLocalStorage()
-    })
-    afterEach(() => {
-        cy.clearLocalStorage()
     })
 
     it('should Create a new comment given a support agent is the first person commenting',  () => {

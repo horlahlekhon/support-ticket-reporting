@@ -65,3 +65,49 @@ module.exports = router
  *        "400":
  *          $ref: '#/components/responses/DuplicateEmail'
  */
+
+
+/**
+ * @swagger
+ * path:
+ *  /auth/login:
+ *    post:
+ *      summary: Login as user
+ *      tags: [Auth]
+ *      requestBody:
+ *        required: true
+ *        content:
+ *          application/json:
+ *            schema:
+ *              type: object
+ *              required:
+ *                - email
+ *                - password
+ *              properties:
+ *                email:
+ *                  type: string
+ *                  format: email
+ *                  description: A valid email registered with
+ *                password:
+ *                  type: string
+ *                  format: password
+ *                  minLength: 8
+ *                  description: At least one number and one letter
+ *              example:
+ *                email: fake@example.com
+ *                password: password1
+ *      responses:
+ *        "200":
+ *          description: Ok
+ *          content:
+ *            application/json:
+ *              schema:
+ *                type: object
+ *                properties:
+ *                  user:
+ *                    $ref: '#/components/schemas/User'
+ *                  tokens:
+ *                    $ref: '#/components/schemas/AuthTokens'
+ *        "403":
+ *          $ref: '#/components/responses/Unauthorized'
+ */

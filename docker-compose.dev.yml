@@ -1,0 +1,6 @@
+version: '3'
+
+services:
+  support-reporting:
+    container_name: support-reporting
+    command: npm run dev

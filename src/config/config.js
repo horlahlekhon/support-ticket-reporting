@@ -6,7 +6,7 @@ dotEnv.config({path: path.join(__dirname, '../../.env')})
 
 const environmentVarScheme = Joi.object()
     .keys({
-        NODE_ENV: Joi.string().valid('development', 'test').required(),
+        NODE_ENV: Joi.string().valid('development', 'test', 'eval').required(),
         PORT: Joi.number().default(3000),
         MONGODB_URL: Joi.string().required().description('Mongo url'),
         JWT_SECRET: Joi.string().required().description('JWT secret key'),
@@ -19,6 +19,7 @@ const { value: envVars, error } = environmentVarScheme.prefs({ errors: { label: 
 if (error) {
     throw new Error(`Config validation error: ${error.message}`);
 }
+
 
 module.exports = {
     env: envVars.NODE_ENV,
