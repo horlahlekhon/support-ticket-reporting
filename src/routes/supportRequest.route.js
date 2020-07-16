@@ -14,7 +14,7 @@ router
 
 router
     .route('/export')
-    .get(validate(supportTicketValidation.exportRequests), supportRequestController.exportSupportRequest)
+    .get(auth('manageSupportTickets'), validate(supportTicketValidation.exportRequests), supportRequestController.exportSupportRequest)
 
 
 router
