@@ -50,19 +50,6 @@ const userSchema = mongoose.Schema(
 
 
 /**
- * Check if email is taken
- * @param {string} email - The user's email
- * @param {ObjectId} [excludeUserId] - The id of the user to be excluded
- * @returns {Promise<boolean>}
- */
-// userSchema.statics.isEmailTaken = async (email, excludeUserId) => {
-//     console.log(`find one typeee: ${typeof this.findOne}`)
-//     console.log({...this})
-//     const user = await this.findOne({ email, _id: { $ne: excludeUserId } });
-//     return !!user;
-// }
-
-/**
  * Check if password matches the user's password
  * @param {string} password
  * @returns {Promise<boolean>}
