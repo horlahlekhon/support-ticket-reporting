@@ -10,7 +10,8 @@ There are two ways to run the project.
         `git clone git@github.com:horlahlekhon/ticket-reporting.git`
 
     Then run the project with, it will pull a mongodb container and run it and build the project and run:
-        `npm run docker:dev`
+
+        `npm start`
 
 * Natively locally: project can also be ran locally by providing a mongodb instance listening at port 27017.
 
