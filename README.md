@@ -11,7 +11,11 @@ There are two ways to run the project.
 
     Then run the project with, it will pull a mongodb container and run it and build the project and run:
 
-        `npm start`
+    create a file called .env and replicate the data inside .env.example to match it. you can just copy it directly to the
+    .env and change the values accordingly. the run :
+
+        `npm install`
+        `npm run docker:dev`
 
 * Natively locally: project can also be ran locally by providing a mongodb instance listening at port 27017.
 
